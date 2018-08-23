@@ -1,6 +1,7 @@
 package com.example.abhijithsreekar.popularmovies;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -86,7 +87,10 @@ public class MainActivity extends AppCompatActivity {
                     mToast.cancel();
                 }
                 mToast = Toast.makeText(getApplicationContext(),"Movie Clicked : " + results.get(clickedItemIndex).getTitle(),Toast.LENGTH_SHORT);
-                mToast.show();
+                // somewhere inside an Activity
+                Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
+                intent.putExtra("Movie", results.get(clickedItemIndex));
+                startActivity(intent);
             }
         });
         rvMain.setHasFixedSize(true);

@@ -58,6 +58,8 @@ public class CustomMoviesAdapter extends RecyclerView.Adapter<CustomMoviesAdapte
         TextView movieTitle;
         @BindView(R.id.ivMovieImage)
         ImageView coverImage;
+        @BindView(R.id.tvReleaseDate)
+        TextView releaseDate;
 
         public CustomMovieViewHolder(View itemView) {
             super(itemView);
@@ -67,7 +69,11 @@ public class CustomMoviesAdapter extends RecyclerView.Adapter<CustomMoviesAdapte
         }
 
         public void bindMovie(Movie movie) {
+            StringBuilder releaseText = new StringBuilder().append("Release Date: ");
+            releaseText.append(movie.getReleaseDate());
+
             movieTitle.setText(movie.getOriginalTitle());
+            releaseDate.setText(releaseText);
             Picasso.Builder builder = new Picasso.Builder(context);
             builder.downloader(new OkHttp3Downloader(context));
             builder.build().load(context.getResources().getString(R.string.IMAGE_BASE_URL) + movie.getPosterPath())
