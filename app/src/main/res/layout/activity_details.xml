@@ -10,17 +10,17 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginBottom="20dp"
+        android:adjustViewBounds="true"
         android:contentDescription="@string/iv_details_content_description"
-        android:scaleType="centerCrop"
-        android:adjustViewBounds="true"/>
+        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/tv_details_MovieTitle"
+        style="@style/FancyLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:layout_marginStart="10dp"
-        style="@style/FancyLarge" />
+        android:layout_marginStart="10dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,32 +31,36 @@
 
         <TextView
             android:id="@+id/tv_details_Language"
+            style="@style/Micro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            style="@style/Micro"/>
+            android:layout_marginStart="10dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/divider"
+            android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"/>
+            android:text="@string/divider" />
+
         <TextView
             android:id="@+id/tv_details_releaseDate"
+            style="@style/Micro"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/Micro"/>
+            android:layout_height="wrap_content" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/divider"
+            android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"/>
+            android:text="@string/divider" />
+
         <TextView
             android:id="@+id/tv_details_voteAverage"
+            style="@style/Micro"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/Micro"/>
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

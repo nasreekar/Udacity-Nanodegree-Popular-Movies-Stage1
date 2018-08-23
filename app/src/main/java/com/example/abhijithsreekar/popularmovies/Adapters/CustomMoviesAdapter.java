@@ -77,7 +77,7 @@ public class CustomMoviesAdapter extends RecyclerView.Adapter<CustomMoviesAdapte
             Picasso.Builder builder = new Picasso.Builder(context);
             builder.downloader(new OkHttp3Downloader(context));
             builder.build().load(context.getResources().getString(R.string.IMAGE_BASE_URL) + movie.getPosterPath())
-                    .placeholder((R.drawable.ic_launcher_background))
+                    .placeholder((R.drawable.gradient_background))
                     .error(R.drawable.ic_launcher_background)
                     .into(coverImage);
         }

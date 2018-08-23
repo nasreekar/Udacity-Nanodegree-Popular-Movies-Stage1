@@ -1,8 +1,8 @@
 package com.example.abhijithsreekar.popularmovies;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -56,7 +56,7 @@ public class DetailsActivity extends AppCompatActivity {
         Picasso.Builder builder = new Picasso.Builder(this);
         builder.downloader(new OkHttp3Downloader(this));
         builder.build().load(this.getResources().getString(R.string.IMAGE_BASE_URL) + selectedMovie.getPosterPath())
-                .placeholder((R.drawable.ic_launcher_background))
+                .placeholder((R.drawable.gradient_background))
                 .error(R.drawable.ic_launcher_background)
                 .into(moviePoster);
     }
