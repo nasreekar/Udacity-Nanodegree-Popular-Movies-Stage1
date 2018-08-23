@@ -9,51 +9,71 @@
         android:id="@+id/iv_details_moviePoster"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:layout_marginBottom="20dp"
+        android:contentDescription="@string/iv_details_content_description"
         android:scaleType="centerCrop"
-        android:contentDescription="@string/iv_details_content_description" />
+        android:adjustViewBounds="true"/>
 
     <TextView
         android:id="@+id/tv_details_MovieTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10sp"
+        android:layout_marginBottom="20dp"
         android:layout_marginStart="10dp"
-        android:textColor="@android:color/white"
-        android:textSize="25sp" />
+        style="@style/FancyLarge" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:background="@android:color/background_light"
+        android:layout_marginBottom="20dp"
+        android:background="@android:color/holo_orange_light"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/tv_details_Language"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            style="@style/Micro"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/divider"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"/>
         <TextView
             android:id="@+id/tv_details_releaseDate"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            style="@style/Micro"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/divider"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"/>
+        <TextView
+            android:id="@+id/tv_details_voteAverage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Micro"/>
 
     </LinearLayout>
 
     <TextView
         android:id="@+id/tv_details_plot_heading"
+        style="@style/DetailsPlotHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginStart="10dp"
-        android:text="@string/plotAnalysis"
-        android:textColor="@android:color/white"
-        android:textSize="25sp" />
+        android:text="@string/plotAnalysis" />
 
     <TextView
         android:id="@+id/tv_details_plot"
+        style="@style/BodySmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/white" />
+        android:layout_marginStart="10dp" />
 
 </LinearLayout>

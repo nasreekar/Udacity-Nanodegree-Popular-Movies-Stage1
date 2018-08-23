@@ -30,10 +30,14 @@ public class DetailsActivity extends AppCompatActivity {
     @BindView(R.id.tv_details_releaseDate)
     TextView movieReleaseDate;
 
+    @BindView(R.id.tv_details_voteAverage)
+    TextView movieVoteAverage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
+        getSupportActionBar().hide();
 
         ButterKnife.bind(this);
         bindSelectedMovieData();
@@ -44,9 +48,10 @@ public class DetailsActivity extends AppCompatActivity {
         Movie selectedMovie = intent.getParcelableExtra("Movie");
 
         movieTitle.setText(selectedMovie.getTitle());
-        movieLanguage.setText(selectedMovie.getOriginalLanguage());
+        movieLanguage.setText(new StringBuilder("Language: ").append(selectedMovie.getOriginalLanguage()));
         moviePlot.setText(selectedMovie.getOverview());
-        movieReleaseDate.setText(selectedMovie.getReleaseDate());
+        movieReleaseDate.setText(new StringBuilder("Release Date: ").append(selectedMovie.getReleaseDate()));
+        movieVoteAverage.setText(new StringBuilder("Rating: ").append(selectedMovie.getVoteAverage()));
 
         Picasso.Builder builder = new Picasso.Builder(this);
         builder.downloader(new OkHttp3Downloader(this));
