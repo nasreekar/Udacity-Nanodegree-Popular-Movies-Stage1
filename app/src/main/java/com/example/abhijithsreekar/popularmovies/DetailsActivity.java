@@ -55,7 +55,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         Picasso.Builder builder = new Picasso.Builder(this);
         builder.downloader(new OkHttp3Downloader(this));
-        builder.build().load(this.getResources().getString(R.string.IMAGE_BASE_URL) + selectedMovie.getPosterPath())
+        builder.build().load(this.getResources().getString(R.string.IMAGE_BASE_URL) + selectedMovie.getBackdropPath())
                 .placeholder((R.drawable.gradient_background))
                 .error(R.drawable.ic_launcher_background)
                 .into(moviePoster);

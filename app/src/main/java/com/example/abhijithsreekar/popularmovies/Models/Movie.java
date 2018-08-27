@@ -196,6 +196,7 @@ public class Movie implements Parcelable {
         dest.writeString(originalLanguage);
         dest.writeString(title);
         dest.writeDouble(voteAverage);
+        dest.writeString(backdropPath);
     }
 
     private Movie(Parcel in){
@@ -206,6 +207,7 @@ public class Movie implements Parcelable {
         this.originalLanguage = in.readString();
         this.title = in.readString();
         this.voteAverage = in.readDouble();
+        this.backdropPath = in.readString();
     }
 
     public static final Parcelable.Creator<Movie> CREATOR = new Parcelable.Creator<Movie>() {
