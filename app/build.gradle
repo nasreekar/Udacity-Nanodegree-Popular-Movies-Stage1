@@ -23,21 +23,17 @@ android {
     }
 
     productFlavors {
-        def BASE_URL = 'BASE_URL'
         def API_KEY = 'API_KEY'
-        def POPULAR_MOVIES_URL = 'POPULAR_MOVIES_URL'
-        def HIGHEST_RATED_MOVIES_URL = 'HIGHEST_RATED_MOVIES_URL'
         def IMAGE_BASE_URL = 'IMAGE_BASE_URL'
+        def LANGUAGE = 'LANGUAGE'
 
         flavorDimensions "default"
         dev {
             applicationIdSuffix '.dev'
             dimension "default"
-            buildConfigField 'String', BASE_URL, '"https://api.themoviedb.org/3/movie/"'
             resValue 'string', API_KEY, '"2abea955e719b669f2d63b54e0bf348e"'
-            resValue 'string', POPULAR_MOVIES_URL, '"https://api.themoviedb.org/3/movie/popular?api_key="'
-            resValue 'string', HIGHEST_RATED_MOVIES_URL, '"https://api.themoviedb.org/3/movie/top_rated?api_key="'
             resValue 'string', IMAGE_BASE_URL, '"https://image.tmdb.org/t/p/w500/"'
+            resValue 'string', LANGUAGE, '"en-US"'
         }
     }
 

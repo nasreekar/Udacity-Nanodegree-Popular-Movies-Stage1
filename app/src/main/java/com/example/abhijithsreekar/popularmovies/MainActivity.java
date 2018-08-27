@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static Retrofit retrofit;
     private static String API_KEY;
+    public List<Movie> movies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
         getPopularMovies();
     }
 
+    // TODO - Implement savedInstancestate and restoreInstanceState - Part 2
+
     // TODO - Refactor popular movies and top rated movies code into one function - Part 2
     private void getPopularMovies() {
         if (new MovieUtils().isNetworkAvailable(this)) {
@@ -60,14 +63,19 @@ public class MainActivity extends AppCompatActivity {
                 retrofit = APIClient.getRetrofitInstance();
             }
             MovieInterface movieService = retrofit.create(MovieInterface.class);
-            Call<MovieResponse> call = movieService.getPopularMovies(API_KEY);
+            Call<MovieResponse> call = movieService.getPopularMovies(API_KEY, getResources().getString(R.string.LANGUAGE), 1);
+            Log.i("Popular movies api", movieService.getPopularMovies(API_KEY, getResources().getString(R.string.LANGUAGE), 1).request().url().toString());
             call.enqueue(new Callback<MovieResponse>() {
                 @Override
                 public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
-                    progressBar.setVisibility(View.INVISIBLE);
-                    List<Movie> movies = response.body().getResults();
-                    generateMovieList(movies);
-                    Log.d(TAG, "Number of movies received: " + movies.size());
+                    if (response.isSuccessful()) {
+                        progressBar.setVisibility(View.INVISIBLE);
+                        movies = response.body().getResults();
+                        if (movies != null) {
+                            generateMovieList(movies);
+                            Log.d(TAG, "Number of popular movies received: " + movies.size());
+                        }
+                    }
                 }
 
                 @Override
@@ -87,14 +95,19 @@ public class MainActivity extends AppCompatActivity {
                 retrofit = APIClient.getRetrofitInstance();
             }
             MovieInterface movieService = retrofit.create(MovieInterface.class);
-            Call<MovieResponse> call = movieService.getTopRatedMovies(API_KEY);
+            Call<MovieResponse> call = movieService.getTopRatedMovies(API_KEY, getResources().getString(R.string.LANGUAGE), 1);
+            Log.i("Top movies api", movieService.getTopRatedMovies(API_KEY, getResources().getString(R.string.LANGUAGE), 1).request().url().toString());
             call.enqueue(new Callback<MovieResponse>() {
                 @Override
                 public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
-                    progressBar.setVisibility(View.INVISIBLE);
-                    List<Movie> movies = response.body().getResults();
-                    generateMovieList(movies);
-                    Log.d(TAG, "Number of movies received: " + movies.size());
+                    if (response.isSuccessful()) {
+                        progressBar.setVisibility(View.INVISIBLE);
+                        movies = response.body().getResults();
+                        if (movies != null) {
+                            generateMovieList(movies);
+                            Log.d(TAG, "Number of top rated movies received: " + movies.size());
+                        }
+                    }
                 }
 
                 @Override

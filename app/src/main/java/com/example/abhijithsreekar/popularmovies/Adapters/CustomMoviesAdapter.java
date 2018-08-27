@@ -61,14 +61,14 @@ public class CustomMoviesAdapter extends RecyclerView.Adapter<CustomMoviesAdapte
         @BindView(R.id.tvReleaseDate)
         TextView releaseDate;
 
-        public CustomMovieViewHolder(View itemView) {
+        CustomMovieViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
             itemView.setOnClickListener(this);
         }
 
-        public void bindMovie(Movie movie) {
+        void bindMovie(Movie movie) {
             StringBuilder releaseText = new StringBuilder().append("Release Date: ");
             releaseText.append(movie.getReleaseDate());
 
