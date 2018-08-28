@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private static Retrofit retrofit;
     private static String API_KEY;
     public List<Movie> movies;
+    private int currentPage = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,12 +59,12 @@ public class MainActivity extends AppCompatActivity {
 
     // TODO - Refactor popular movies and top rated movies code into one function - Part 2
     private void getPopularMovies() {
-        if (new MovieUtils().isNetworkAvailable(this)) {
+        if (MovieUtils.getInstance().isNetworkAvailable(this)) {
             if (retrofit == null) {
                 retrofit = APIClient.getRetrofitInstance();
             }
             MovieInterface movieService = retrofit.create(MovieInterface.class);
-            Call<MovieResponse> call = movieService.getPopularMovies(API_KEY, getResources().getString(R.string.LANGUAGE), 1);
+            Call<MovieResponse> call = movieService.getPopularMovies(API_KEY, getResources().getString(R.string.LANGUAGE), currentPage);
             Log.i("Popular movies api", movieService.getPopularMovies(API_KEY, getResources().getString(R.string.LANGUAGE), 1).request().url().toString());
             call.enqueue(new Callback<MovieResponse>() {
                 @Override
@@ -90,12 +91,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getTopRatedMovies() {
-        if (new MovieUtils().isNetworkAvailable(this)) {
+        if (MovieUtils.getInstance().isNetworkAvailable(this)) {
             if (retrofit == null) {
                 retrofit = APIClient.getRetrofitInstance();
             }
             MovieInterface movieService = retrofit.create(MovieInterface.class);
-            Call<MovieResponse> call = movieService.getTopRatedMovies(API_KEY, getResources().getString(R.string.LANGUAGE), 1);
+            Call<MovieResponse> call = movieService.getTopRatedMovies(API_KEY, getResources().getString(R.string.LANGUAGE), currentPage);
             Log.i("Top movies api", movieService.getTopRatedMovies(API_KEY, getResources().getString(R.string.LANGUAGE), 1).request().url().toString());
             call.enqueue(new Callback<MovieResponse>() {
                 @Override

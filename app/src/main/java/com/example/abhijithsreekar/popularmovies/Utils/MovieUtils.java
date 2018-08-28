@@ -8,10 +8,18 @@ import android.util.Log;
 final public class MovieUtils {
 
     private boolean connected;
+    private static MovieUtils instance;
+
+    public static MovieUtils getInstance() {
+        if (null != instance) {
+            return instance;
+        } else {
+            instance = new MovieUtils();
+        }
+        return instance;
+    }
 
     private MovieUtils() {
-        // To prevent reflection from working, throw an exception from the constructor:
-        throw new UnsupportedOperationException();
     }
 
     public boolean isNetworkAvailable(Context context) {
