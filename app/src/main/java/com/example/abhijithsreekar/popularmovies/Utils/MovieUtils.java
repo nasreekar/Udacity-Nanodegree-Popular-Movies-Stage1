@@ -5,9 +5,14 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
 
-public class MovieUtils {
+final public class MovieUtils {
 
-    private boolean connected = false;
+    private boolean connected;
+
+    private MovieUtils() {
+        // To prevent reflection from working, throw an exception from the constructor:
+        throw new UnsupportedOperationException();
+    }
 
     public boolean isNetworkAvailable(Context context) {
         try {
